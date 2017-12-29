@@ -1,8 +1,8 @@
 -- 权限表 --
 CREATE TABLE permission (
   pid int(11) NOT NULL AUTO_INCREMENT,
-  name VARCHAR(255) NOT NULL DEFAULT '',
-  url VARCHAR(255) DEFAULT '',
+  st_name VARCHAR(255) NOT NULL DEFAULT '',
+  st_url VARCHAR(255) DEFAULT '',
   PRIMARY KEY (pid)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
@@ -15,8 +15,8 @@ INSERT INTO permission VALUES ('4', 'query', '');
 -- 用户表 --
 CREATE TABLE user (
   uid int(11) NOT NULL AUTO_INCREMENT,
-  username VARCHAR(255) NOT NULL DEFAULT '',
-  password VARCHAR(255) NOT NULL DEFAULT '',
+  st_username VARCHAR(255) NOT NULL DEFAULT '',
+  st_password VARCHAR(255) NOT NULL DEFAULT '',
   PRIMARY KEY (uid)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
@@ -26,7 +26,7 @@ INSERT INTO user VALUES ('2', 'demo', '123');
 -- 角色表 --
 CREATE TABLE role (
   rid int(11) NOT NULL AUTO_INCREMENT,
-  rname VARCHAR(255) NOT NULL DEFAULT '',
+  st_rname VARCHAR(255) NOT NULL DEFAULT '',
   PRIMARY KEY (rid)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 

@@ -1,11 +1,8 @@
 package com.zq.shiroweb.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,13 +13,23 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Table(name = "user")
 public class UserEntity {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "uid", nullable = false, insertable = false)
     private Integer uid;
 
+    @Column(name = "st_username", nullable = false)
     private String username;
 
+    @Column(name = "st_password", nullable = false)
     private String password;
 
+    @Transient
     private Set<RoleEntity> roles = new HashSet<>();
 }
