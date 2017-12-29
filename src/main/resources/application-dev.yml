@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: shiroWeb1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: mysql
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shiro?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: zq
+    password: 1234
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+logging:  #log
+  path: D:/sringbootWorkspace/shirologs
+  level: debug
