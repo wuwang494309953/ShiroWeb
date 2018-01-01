@@ -1,6 +1,6 @@
 package com.zq.shiroweb.dao;
 
-import com.zq.shiroweb.entity.UserEntity;
+import com.zq.shiroweb.entity.SysAcl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ public class UserDaoTest {
 
     @Test
     public void contextLoads() {
-        List<UserEntity> result = userDao.findAll();
+        List<SysAcl> result = userDao.findAll();
         System.out.println(result);
         Assert.assertTrue(result.size() > 0);
     }
