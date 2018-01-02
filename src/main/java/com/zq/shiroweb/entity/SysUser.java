@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Archar on 2018/1/1.
@@ -50,4 +51,10 @@ public class SysUser {
 
     @Column(name = "operate_ip", nullable = false)
     private String operateIp;
+
+    @ManyToMany
+    @JoinTable(name = "sys_role_user",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
+    private Set<SysRole> roleSet;
 }

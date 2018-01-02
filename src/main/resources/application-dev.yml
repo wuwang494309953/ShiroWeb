@@ -8,7 +8,7 @@ spring:
     database: mysql
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3307/shiro?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/shiro?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
     username: root
     password: 1234
   thymeleaf:
