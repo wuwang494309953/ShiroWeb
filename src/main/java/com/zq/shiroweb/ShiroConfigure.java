@@ -46,7 +46,7 @@ public class ShiroConfigure {
         DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
         manager.setCacheManager(new MemoryConstrainedCacheManager());
         manager.setRealm(myRealm);
-        SecurityUtils.setSecurityManager(manager);
+//        SecurityUtils.setSecurityManager(manager);
         return manager;
     }
 
@@ -69,10 +69,10 @@ public class ShiroConfigure {
         return advisor;
     }
 
-    @Bean
+/*    @Bean
     public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
         DefaultAdvisorAutoProxyCreator creator = new DefaultAdvisorAutoProxyCreator();
         creator.setExposeProxy(true);
         return creator;
-    }
+    }*/
 }

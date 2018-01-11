@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class LoginController {
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public JsonData login(LoginParam param, HttpSession session) {
         BeanValidator.check(param);
         UsernamePasswordToken token = new UsernamePasswordToken(param.getUsername(), param.getPassword());

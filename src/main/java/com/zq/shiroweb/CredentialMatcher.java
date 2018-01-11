@@ -13,7 +13,7 @@ public class CredentialMatcher extends SimpleCredentialsMatcher {
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
         String password = new String(usernamePasswordToken.getPassword());
-        String dbPassword = (String) info.getCredentials();
+        String dbPassword = String.valueOf((char[]) info.getCredentials());
         return this.equals(password, dbPassword);
     }
 }
