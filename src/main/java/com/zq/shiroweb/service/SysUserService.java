@@ -8,6 +8,7 @@ import com.zq.shiroweb.exception.ParamException;
 import com.zq.shiroweb.param.UserParam;
 import com.zq.shiroweb.util.BeanValidator;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -21,6 +22,7 @@ import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -78,7 +80,11 @@ public class SysUserService {
         sysUserDao.findAll(new Specification<SysUser>() {
             @Override
             public Predicate toPredicate(Root<SysUser> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                return null;
+                List<Predicate> predicates = new LinkedList<>();
+//                if (StringUtils.isNotEmpty()) {
+//                    predicates.add(criteriaBuilder.equal(root.get("businessId"), ));
+//                }
+                return criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()])).getRestriction();
             }
         }, pageRequest);
 
