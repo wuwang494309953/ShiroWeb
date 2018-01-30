@@ -1,5 +1,6 @@
 package com.zq.shiroweb.testController;
 
+import com.zq.shiroweb.common.JsonData;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-    @RequestMapping("/test1")
-    public String test() {
-        SecurityUtils.getSubject();
-        return "这是一个十分炫酷的测试";
+    @RequestMapping("/testRole")
+    public JsonData testRole() {
+        return JsonData.success("请求成功啦");
     }
 }

@@ -12,7 +12,9 @@ public class JsonData {
 
     private boolean ret;
 
-    private String msg;
+    private String code;
+
+    private String msg = "一条默认信息";
 
     private Object data;
 
@@ -26,6 +28,8 @@ public class JsonData {
         jsonData.msg = msg;
         return jsonData;
     }
+
+
 
     public static JsonData success(String message) {
         JsonData jsonData = new JsonData(true);
@@ -45,6 +49,13 @@ public class JsonData {
 
     public static JsonData fail(String msg) {
         JsonData jsonData = new JsonData(false);
+        jsonData.msg = msg;
+        return jsonData;
+    }
+
+    public static JsonData fail(String code, String msg) {
+        JsonData jsonData = new JsonData(false);
+        jsonData.code = code;
         jsonData.msg = msg;
         return jsonData;
     }

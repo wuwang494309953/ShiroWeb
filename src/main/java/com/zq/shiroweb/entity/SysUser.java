@@ -1,8 +1,10 @@
 package com.zq.shiroweb.entity;
 
+import com.google.common.collect.Sets;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -16,7 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "sys_user")
-public class SysUser {
+public class SysUser implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false, updatable = false)
@@ -31,11 +33,15 @@ public class SysUser {
     @Column(name = "mail", nullable = false)
     private String mail;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "dept_id", nullable = false)
-    private Integer deptId;
+    /*@Column(name = "dept_id", nullable = false)
+    private Integer deptId;*/
+
+    @ManyToOne
+    @JoinColumn(name = "dept_id", nullable = false)
+    private SysDept dept;
 
     @Column(name = "status", nullable = false)
     private Integer status;
@@ -56,5 +62,5 @@ public class SysUser {
     @JoinTable(name = "sys_role_user",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
-    private Set<SysRole> roleSet;
+    private Set<SysRole> roleSet = Sets.newHashSet();
 }

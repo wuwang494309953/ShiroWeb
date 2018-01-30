@@ -3,6 +3,7 @@ package com.zq.shiroweb.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "sys_dept")
-public class SysDept {
+public class SysDept implements Serializable {
 
     @Id
     @GeneratedValue

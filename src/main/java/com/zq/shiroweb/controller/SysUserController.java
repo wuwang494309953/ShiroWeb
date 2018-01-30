@@ -19,12 +19,28 @@ public class SysUserController {
     private SysUserService sysUserService;
 
     @RequestMapping("/save.json")
-    public JsonData saveDept(UserParam param) {
+    public JsonData saveUser(UserParam param) {
         if (param.getId() == null) {
             sysUserService.save(param);
         } else {
             sysUserService.update(param);
         }
         return JsonData.success("保存成功");
+    }
+
+    @RequestMapping("/userList.json")
+    public JsonData userList(UserParam param, Integer pageIndex, Integer pageSize, String sortKey, String sortValue) {
+        return JsonData.success(sysUserService.findUserList(param, pageIndex, pageSize, sortKey, sortValue));
+    }
+
+    @RequestMapping("/allUsers.json")
+    public JsonData getAllUsers(Integer roleId) {
+        return JsonData.success(sysUserService.findUsersWithRoleId());
+    }
+
+    @RequestMapping("/del.json")
+    public JsonData delUser(Integer userId) {
+        sysUserService.delUserWithId(userId);
+        return JsonData.success("删除成功");
     }
 }

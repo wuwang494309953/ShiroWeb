@@ -1,6 +1,5 @@
 package com.zq.shiroweb.dao;
 
-import com.zq.shiroweb.entity.SysAcl;
 import com.zq.shiroweb.entity.SysUser;
 import org.junit.Assert;
 import org.junit.Test;
@@ -33,7 +32,8 @@ public class SysUserDaoTest {
     @Test
     @Transactional
     public void test1() {
-        SysUser user = sysUserDao.findByUsernameEquals("admin");
+        SysUser user = sysUserDao.findFirstByUsernameEquals("Saber");
+//        SysDept dept = user.getDept();
         Set roles = user.getRoleSet();
         System.out.println(roles);
     }

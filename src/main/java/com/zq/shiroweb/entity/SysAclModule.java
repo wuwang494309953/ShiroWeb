@@ -1,9 +1,11 @@
 package com.zq.shiroweb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Archar on 2018/1/1.
@@ -48,4 +50,16 @@ public class SysAclModule {
 
     @Column(name = "operate_ip", nullable = false)
     private String operateIp;
+
+    @OneToMany
+    @JoinColumn(name = "acl_module_id")
+    @JsonIgnore
+    private Set<SysAcl> aclSet;
+
+    @ManyToMany
+    @JoinTable(name = "sys_role_acl",
+            joinColumns = {@JoinColumn(name = "acl_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    @JsonIgnore
+    private Set<SysRole> roleSet;
 }

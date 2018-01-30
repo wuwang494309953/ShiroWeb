@@ -28,8 +28,12 @@ public class SysAcl {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "acl_module_id", nullable = false)
-    private Integer aclModuleId;
+    /*@Column(name = "acl_module_id", nullable = false)
+    private Integer aclModuleId;*/
+
+    @ManyToOne
+    @JoinColumn(name = "acl_module_id", nullable = false)
+    private SysAclModule aclModule;
 
     @Column(name = "url", nullable = false)
     private String url;

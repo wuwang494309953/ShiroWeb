@@ -1,5 +1,6 @@
 package com.zq.shiroweb.entity;
 
+import com.zq.shiroweb.entityEnum.RoleTypeEnum;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,8 +26,14 @@ public class SysRole {
     @Column(name = "name", nullable = false)
     private String name;
 
+    /**
+     * '角色的类型，1：管理员角色，2：其他'
+     */
     @Column(name = "type", nullable = false)
     private Integer type;
+
+    /*@Column(name = "type", nullable = false)
+    private RoleTypeEnum type;*/
 
     @Column(name = "status", nullable = false)
     private Integer status;
@@ -47,7 +54,7 @@ public class SysRole {
     @JoinTable(name = "sys_role_acl",
             joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "acl_id", referencedColumnName = "id")})
-    private Set<SysAcl> aclSet;
+    private Set<SysAclModule> aclModuleSet;
 
     @ManyToMany
     @JoinTable(name = "sys_role_user",
