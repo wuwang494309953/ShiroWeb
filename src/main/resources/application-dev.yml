@@ -27,3 +27,5 @@ logging:  #log
   level: debug
 server:
   port: 9000
+  tomcat:
+    uri-encoding: utf-8
