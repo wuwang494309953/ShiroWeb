@@ -95,7 +95,7 @@ public class SysAclService {
     public Map<String, Object> findAclList(AclParam param, Integer pageIndex, Integer pageSize, String sortKey, String sortValue) {
         pageIndex = pageIndex == null ? 0 : pageIndex;
         pageSize = pageSize == null ? 10 : pageSize;
-        PageRequest pageRequest = new PageRequest(pageIndex, pageSize, sortWithStr(sortKey, sortValue));
+        PageRequest pageRequest = PageRequest.of(pageIndex, pageSize, sortWithStr(sortKey, sortValue));
         Specification<SysAcl> specification = new Specification<SysAcl>() {
             @Override
             public Predicate toPredicate(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder) {

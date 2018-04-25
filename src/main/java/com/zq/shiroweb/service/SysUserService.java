@@ -1,21 +1,21 @@
 package com.zq.shiroweb.service;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.*;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.zq.shiroweb.dao.SysAclDao;
 import com.zq.shiroweb.dao.SysDeptDao;
 import com.zq.shiroweb.dao.SysUserDao;
 import com.zq.shiroweb.dto.UserDto;
-import com.zq.shiroweb.entity.QSysDept;
 import com.zq.shiroweb.entity.QSysUser;
 import com.zq.shiroweb.entity.SysUser;
 import com.zq.shiroweb.exception.ParamException;
 import com.zq.shiroweb.param.UserParam;
 import com.zq.shiroweb.util.BeanValidator;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +25,7 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.lang.reflect.Field;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Archar on 2018/1/2.
@@ -113,7 +110,6 @@ public class SysUserService {
             predicates.add(qSysUser.mail.like("%" + param.getMail() + "%"));
         }
 
-        Predicate[] dslPredicates = new Predicate[predicates.size()];
         QueryResults<UserDto> fetchResults = queryFactory
                 .select(
                     Projections.bean(
@@ -128,7 +124,7 @@ public class SysUserService {
                         qSysUser.status,
                         qSysUser.remark)
                 )
-                .where(predicates.toArray(dslPredicates))
+                .where(predicates.toArray(new Predicate[predicates.size()]))
                 .offset(pageIndex * pageSize)
                 .limit(pageSize)
                 .orderBy(orderOf(qSysUser, sortKey, sortValue))

@@ -23,8 +23,9 @@ spring:
   aop:
     proxy-target-class: true
 logging:  #log
-  path: D:/sringbootWorkspace/shirologs
-  level: debug
+  path: logs/
+  level:
+    com.zq.shiroweb: debug
 server:
   port: 9000
   tomcat:

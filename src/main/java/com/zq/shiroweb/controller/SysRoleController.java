@@ -3,14 +3,10 @@ package com.zq.shiroweb.controller;
 import com.zq.shiroweb.common.JsonData;
 import com.zq.shiroweb.param.RoleParam;
 import com.zq.shiroweb.service.SysRoleService;
-import org.apache.commons.lang3.StringUtils;
-import org.codehaus.groovy.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Created by Archar on 2018/1/18.
